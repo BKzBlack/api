@@ -3,7 +3,7 @@ const express = require("express");
 const mysql = require("mysql2/promise");
 const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
-const session = require("express-session");
+// const session = require("express-session");
 const bcrypt = require("bcrypt");
 
 const app = express();
@@ -16,13 +16,13 @@ app.use(
 );
 app.use(cookieParser());
 
-app.use(
-    session({
-        secret: "secret",
-        resave: false,
-        saveUninitialized: true,
-    }),
-);
+// app.use(
+//     session({
+//         secret: "secret",
+//         resave: false,
+//         saveUninitialized: true,
+//     }),
+// );
 
 const port = 3000;
 const secret = "mysecret";
@@ -116,9 +116,9 @@ app.post("/api/login", async (req, res) => {
         // });
 
         // ใส่ข้อมูล user เก็บคู่กับ session ไว้
-        console.log("get session", req.sessionID);
-        req.session.user = user;
-        req.session.userId = user.md_reg_id;
+        // console.log("get session", req.sessionID);
+        // req.session.user = user;
+        // req.session.userId = user.md_reg_id;
         // console.log(user);
         // res.send({ message: "Login successful" });
         res.status(200).send({ message: "Login successful" });
